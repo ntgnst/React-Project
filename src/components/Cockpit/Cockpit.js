@@ -10,7 +10,7 @@ const cockpit = props => {
     setTimeout(() => {
       alert("Data transfer done.");
     }, 1000);
-  },[props.persons]);
+  },[]);
 
   const assignedClasses = [];
   let btnClass = "";
