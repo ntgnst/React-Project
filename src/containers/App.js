@@ -9,7 +9,7 @@ class App extends Component {
     console.log("App.js constructor.");
   }
 
-   state = {
+  state = {
     persons: [
       { id: "asfa1", name: "Max", age: 28 },
       { id: "vasdf1", name: "Manu", age: 29 },
@@ -19,45 +19,25 @@ class App extends Component {
     showPersons: false
   };
 
-  getDerivedStateFromProps = (props, state) => {
-    console.log("App.js getDerivedStateFromProps");
+  static getDerivedStateFromProps(props, state) {
+    console.log("App.js getDerivedStateFromProps", props);
     return state;
-  };
+  }
+  shouldComponentUpdate() {
+    console.log("App.js shouldComponentUpdate");
+    return true;
+  }
+  componentDidMount() {
+    console.log("App.js componentDidMount");
+  }
+  componentDidUpdate() {
+    console.log("App.js componentDidUpdate");
+  }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log("App.js getSnapshotBeforeUpdate");
     console.log([prevProps, prevState]);
     return { message: "This is Snapshot" };
-  }
-
-  componentDidUpdate(prevProps) {
-    alert(React.version);
-    console.log("App.js componentDidUpdate");
-  }
-
-  componentWillMount(){
-    console.log('App.js componentWillMount');
-  }
-
-  componentWillUnmount() {
-    //Shouldnt call setState here !
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(
-      "shouldComponentUpdate working..." +
-        "NextProps:" +
-        nextProps +
-        "..." +
-        "NextState" +
-        nextState
-    );
-    return true;
-  }
-  static getDerivedStateFromProps(props, state){
-    console.log('App.js getDerivedStateFromProps');
-  }
-  componentDidMount() {
-    console.log("App.js componentDidMount");
   }
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
